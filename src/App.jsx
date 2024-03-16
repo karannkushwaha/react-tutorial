@@ -1,16 +1,23 @@
 import { useState } from "react";
-import "./App.css";
+import { Button } from "react-bootstrap";
+import Fragments from "./components/Fragments";
 
 function App() {
   const [count, setCount] = useState(0);
+  let myName = "Karan Kushwaha";
   return (
     <>
-      <h1>Karan + Kushwaha</h1>
+      <h1>{myName}</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <Button
+          variant="warning"
+          onClick={() => setCount((count) => count + 1)}
+        >
           count is {count}
-        </button>
+        </Button>
       </div>
+
+      <Fragments />
     </>
   );
 }
