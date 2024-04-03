@@ -1,18 +1,21 @@
-import { ListGroup } from "react-bootstrap";
-
-// const FoodItem = (props) => {
+import { useState } from "react";
+import Items from "./Items";
 const FoodItem = ({ foodItem }) => {
-  //   let { foodItem } = props;
+  let [activeItems, setActiveItems] = useState([]);
+  const onBuyButton = (items, event) => {
+    let newItems = [...activeItems, items];
+    setActiveItems(newItems);
+  };
   return (
     <>
-      <ListGroup as="ol" numbered>
-        {/* {props.foodItem.map((item) => ( */}
-        {foodItem.map((item) => (
-          <ListGroup.Item key={item} as="li">
-            {item}
-           </ListGroup.Item>
-        ))}
-      </ListGroup>
+      {foodItem.map((items) => (
+        <Items
+          key={items}
+          foodItem={items}
+          bought={activeItems.includes(items)}
+          handleBuyClicked={(event) => onBuyButton(items, event)}
+        />
+      ))}
     </>
   );
 };
